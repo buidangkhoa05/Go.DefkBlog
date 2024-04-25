@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Go.DefkBlog/internal/app"
+	"Practice.Golang/internal/app"
 )
 
 func main() {

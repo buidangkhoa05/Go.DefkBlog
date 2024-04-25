@@ -14,6 +14,7 @@ func MapRouter(e *echo.Echo) {
 	apiGp := e.Group("/api")
 	ver1Gp := apiGp.Group("/v1")
 	{
+		// Test endpoint
 		ver1Gp.GET("/hello", func(c echo.Context) error {
 			return c.String(http.StatusOK, "Hello word")
 		})
