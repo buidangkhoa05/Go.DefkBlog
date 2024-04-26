@@ -15,16 +15,16 @@ type TodoListRepo struct {
 	Db *gorm.DB
 }
 
-func NewTodoListRepo() *TodoListRepo {
+func NewTodoListRepo() (*TodoListRepo, error) {
 	pg, err := storage.NewPostgresDb()
 
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return &TodoListRepo{
 		Db: pg,
-	}
+	}, nil
 }
 
 func (repo *TodoListRepo) GetAll(ctx echo.Context) *[]model.TodoList {

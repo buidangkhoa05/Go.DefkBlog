@@ -5,6 +5,8 @@ import (
 	"net/http"
 )
 
+type GroupRoute *echo.Group
+
 func MapRouter(e *echo.Echo) {
 
 	e.GET("/", func(c echo.Context) error {
@@ -18,6 +20,9 @@ func MapRouter(e *echo.Echo) {
 		ver1Gp.GET("/hello", func(c echo.Context) error {
 			return c.String(http.StatusOK, "Hello word")
 		})
+
+		//TodoList
+		UseTodoListRoute(ver1Gp)
 	}
 
 }

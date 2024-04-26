@@ -12,10 +12,16 @@ type TodoListService struct {
 	todoListRepo storage.ITodoListRepo
 }
 
-func NewTodoListService() *TodoListService {
-	return &TodoListService{
-		todoListRepo: storage.NewTodoListRepo(),
+func NewTodoListService() (*TodoListService, error) {
+	todoListRepo, err := storage.NewTodoListRepo()
+
+	if err != nil {
+		return nil, err
 	}
+
+	return &TodoListService{
+		todoListRepo: todoListRepo,
+	}, nil
 }
 
 func (s *TodoListService) GetTodoList(ctx echo.Context) *[]model.TodoList {
